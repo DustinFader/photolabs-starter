@@ -7,7 +7,7 @@ function PhotoFavButton(props) {
   const [button, setButton] = useState(false);
 
   const handleClick = () => {
-    setButton(!button);
+    setButton(preBool => !preBool);
   }
 
   return (
