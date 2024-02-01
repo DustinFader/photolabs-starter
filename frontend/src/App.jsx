@@ -1,5 +1,4 @@
 import React from 'react';
-import PhotoFavButton from "./components/PhotoFavButton"
 
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
@@ -16,10 +15,7 @@ const sampleDataForPhotoListItem = {
 };
 
 const photos = new Array(3).fill(null).map((_, index) =>
-  <>
-    <PhotoFavButton />
     <PhotoListItem key={index} {...sampleDataForPhotoListItem}/>
-  </>
 );
 
 // Note: Rendering a single component to build components in isolation
