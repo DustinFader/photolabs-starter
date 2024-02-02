@@ -14,11 +14,11 @@ const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
       <PhotoFavButton liked={liked} handleLikeClick={handleLikeClick}/>
-      <img className="photo-list__image" key={props.id} src={props.imageSource}></img>
+      <img className="photo-list__image" key={props.id} src={props.urls.full} alt={props.urls.regular}></img>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={props.profile}></img>
+        <img className="photo-list__user-profile" src={props.user.profile}></img>
         <div className="photo-list__user-info">
-          <p>{props.username}</p>
+          <p>{props.user.name}</p>
           <p className="photo-list__user-location">{props.location.city}, {props.location.country}</p>
         </div>
       </div>
