@@ -3,7 +3,7 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
   return (
-    <div key={props.id} className="topic-list__item &:hover">
+    <div key={props.id} className="topic-list__item">
       <span>{props.title}</span>
     </div>
   );
