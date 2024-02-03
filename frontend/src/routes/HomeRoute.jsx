@@ -19,7 +19,7 @@ const HomeRoute = ({ topics, photos }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics}/>
+      <TopNavigation topics={topics} liked={liked}/>
       <PhotoList photos={photos} liked={liked} setLiked={setLiked} toggleLiked={toggleLiked}/>
     </div>
   );
