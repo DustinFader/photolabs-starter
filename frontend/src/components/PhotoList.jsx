@@ -6,7 +6,7 @@ import PhotoListItem from "./PhotoListItem";
 const PhotoList = ({ photos, liked, toggleLiked, displayModal }) => {
   return (
     <ul className="photo-list">
-      {photos.map(photo => (
+      {photos && photos.map(photo => (
         <PhotoListItem key={photo.id} {...photo} liked={liked} toggleLiked={toggleLiked} displayModal={displayModal}/>
       ))}
     </ul>
