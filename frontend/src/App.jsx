@@ -9,14 +9,14 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   const [fullImage, setFullImage] = useState(false);
 
-  const toggleImage = () => {
+  const displayModal = () => {
     setFullImage(bool => !bool)
   }
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} toggleImage={toggleImage}/>
-      {fullImage && <PhotoDetailsModal toggleImage={toggleImage}/>}
+      <HomeRoute topics={topics} photos={photos} displayModal={displayModal}/>
+      {fullImage && <PhotoDetailsModal displayModal={displayModal}/>}
     </div>
   );
 };

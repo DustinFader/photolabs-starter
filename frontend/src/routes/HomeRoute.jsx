@@ -4,7 +4,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({ topics, photos, toggleImage }) => {
+const HomeRoute = ({ topics, photos, displayModal }) => {
   
   const [liked, setLiked] = useState([]);
 
@@ -20,7 +20,7 @@ const HomeRoute = ({ topics, photos, toggleImage }) => {
   return (
     <div className="home-route">
       <TopNavigation topics={topics} liked={liked}/>
-      <PhotoList photos={photos} liked={liked} setLiked={setLiked} toggleLiked={toggleLiked} toggleImage={toggleImage}/>
+      <PhotoList photos={photos} liked={liked} setLiked={setLiked} toggleLiked={toggleLiked} displayModal={displayModal}/>
     </div>
   );
 };
