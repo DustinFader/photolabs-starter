@@ -15,7 +15,6 @@ const HomeRoute = ({ topics, photos }) => {
       } else {
         return [...currentFav, id];
       }})
-      console.log(liked)
   }
 
   return (
