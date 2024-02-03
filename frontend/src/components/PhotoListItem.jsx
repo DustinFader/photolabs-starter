@@ -8,7 +8,7 @@ const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
       <PhotoFavButton photoId={props.id} liked={props.liked.includes(props.id)} toggleLiked={props.toggleLiked}/>
-      <img className="photo-list__image" key={props.id} src={props.urls.regular} alt={'image'} onClick={() => props.displayModal()}></img>
+      <img className="photo-list__image" key={props.id} src={props.urls.regular} alt={'image'} onClick={() => props.displayModal(props.urls.full)}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={props.user.profile}></img>
         <div className="photo-list__user-info">
