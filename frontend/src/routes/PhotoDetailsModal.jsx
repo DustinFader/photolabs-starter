@@ -26,7 +26,7 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
         <h4 className='photo-details-modal__header'>Similar bombastic photos</h4>
-        <PhotoList similar_photos={props.fullImage.similar_photos} liked={props.fullImage.liked} toggleLiked={props.fullImage.toggleLiked} />
+        <PhotoList photos={props.fullImage.similar_photos} liked={props.fullImage.liked} toggleLiked={props.fullImage.toggleLiked} />
       </div>
     </div>
   )
