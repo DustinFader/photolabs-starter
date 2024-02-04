@@ -13,10 +13,21 @@ const App = () => {
     setFullImage(photo);
   }
 
+  const [liked, setLiked] = useState([]);
+
+  const toggleLiked = (id) => {
+    setLiked((currentFav) => {
+      if (liked.includes(id)) {
+        return liked.filter((favId) => favId !== id);
+      } else {
+        return [...currentFav, id];
+      }})
+  }
+
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} displayModal={displayModal}/>
-      {fullImage && <PhotoDetailsModal displayModal={displayModal} fullImage={fullImage}/>}
+      <HomeRoute topics={topics} photos={photos} displayModal={displayModal} liked={liked} toggleLiked={toggleLiked}/>
+      {fullImage && <PhotoDetailsModal displayModal={displayModal} fullImage={fullImage} liked={liked} toggleLiked={toggleLiked}/>}
     </div>
   );
 };

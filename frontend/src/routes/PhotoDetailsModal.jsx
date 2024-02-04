@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
@@ -7,9 +7,8 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = (props) => {
 
   useEffect(() => {
-    console.log(props.fullImage);
-    console.log(props.fullImage.similar_photos);
-  }, [])
+    console.log(props);
+  }, [props])
 
   return (
     <div className="photo-details-modal">
@@ -26,7 +25,7 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
         <h4 className='photo-details-modal__header'>Similar bombastic photos</h4>
-        <PhotoList photos={props.fullImage.similar_photos} liked={props.fullImage.liked} toggleLiked={props.fullImage.toggleLiked} />
+        <PhotoList photos={props.fullImage.similar_photos} liked={props.liked} toggleLiked={props.toggleLiked} />
       </div>
     </div>
   )
