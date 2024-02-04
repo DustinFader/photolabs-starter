@@ -1,7 +1,4 @@
 .photo-list__item {
-  p {
-    margin: 0;
-  }
   margin: 24px;
   padding: 8px;
   border-width: 0.5px;
@@ -37,6 +34,9 @@
 
 .photo-list__user-details {
   display: flex;
+  p {
+    margin: 0;
+  }
 }
 
 .photo-list__user-info {
