@@ -7,9 +7,7 @@ const PhotoListItem = (props) => {
 
   return (
     <div className="photo-list__item">
-      {/* In modal the favIcon does not fill */}
       <PhotoFavButton photoId={props.id} liked={props.liked.includes(props.id)} toggleLiked={props.toggleLiked}/>
-      {/* Error with the display modal on click in a modal */}
       <img className="photo-list__image" key={props.id} src={props.urls.regular} alt={'image'} onClick={() => props.displayModal(props)}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={props.user.profile}></img>
