@@ -4,12 +4,12 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({ topics, photos, displayModal, liked }) => {
+const HomeRoute = ({ topics, photos, displayModal, liked, toggle }) => {
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} liked={liked}/>
-      <PhotoList photos={photos} liked={liked} displayModal={displayModal}/>
+      <PhotoList photos={photos} liked={liked} displayModal={displayModal} toggle={toggle}/>
     </div>
   );
 };

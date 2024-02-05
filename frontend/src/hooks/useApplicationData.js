@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-
+import photos from '../mocks/photos'
 // export const useApplicationData = () => {
 //   const [fullImage, setFullImage] = useState(null);
 //   const [liked, setLiked] = useState([]);
@@ -46,7 +46,7 @@ function reducer(state, action) {
 }
 
 export function useApplicationData() {
-  const [state, dispatch] = useReducer(reducer, { liked: [], fullImage: null});
+  const [state, dispatch] = useReducer(reducer, { photos:photos, liked: [], fullImage: null});
 
   const toggle = (id) => {
     dispatch({ type: TOGGLE_LIKED, id: id})
