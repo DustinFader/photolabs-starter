@@ -11,15 +11,14 @@ const App = () => {
 
   const {
     fullImage,
-    liked,
-    displayModal,
-    toggleLiked
+    state,
+    displayModal
   } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} displayModal={displayModal} liked={liked} toggleLiked={toggleLiked}/>
-      {fullImage && <PhotoDetailsModal displayModal={displayModal} fullImage={fullImage} liked={liked} toggleLiked={toggleLiked}/>}
+      <HomeRoute topics={topics} photos={photos} displayModal={displayModal} liked={state.liked}/>
+      {fullImage && <PhotoDetailsModal displayModal={displayModal} fullImage={fullImage} liked={state.liked}/>}
     </div>
   );
 };

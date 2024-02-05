@@ -7,10 +7,10 @@ const PhotoList = ({ photos, liked, toggleLiked, displayModal }) => {
   return (
     <ul className="photo-list">
       {Array.isArray(photos) && photos.map(photo => (
-        <PhotoListItem key={photo.id} {...photo} liked={liked} toggleLiked={toggleLiked} displayModal={displayModal}/>
+        <PhotoListItem key={photo.id} {...photo} liked={liked} displayModal={displayModal}/>
       ))}
       {!Array.isArray(photos) && Object.values(photos).map(photo => (
-        <PhotoListItem key={photo.id} {...photo} liked={liked} toggleLiked={toggleLiked} displayModal={displayModal}/>
+        <PhotoListItem key={photo.id} {...photo} liked={liked} displayModal={displayModal}/>
       ))}
     </ul>
   );

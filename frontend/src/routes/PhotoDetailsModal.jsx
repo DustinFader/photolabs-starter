@@ -3,8 +3,11 @@ import React, { useEffect, useCallback } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import { useApplicationData } from 'hooks/useApplicationData';
 
 const PhotoDetailsModal = (props) => {
+
+  const { dispatch } = useApplicationData();
 
   useEffect(() => {
     console.log(props);
