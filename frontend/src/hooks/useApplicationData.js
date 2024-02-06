@@ -1,9 +1,14 @@
-import { useReducer } from "react";
-import photos from "../mocks/photos";
+import { useEffect, useReducer } from "react";
+
+const ACTIONS = {
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  TOGGLE_MODAL: "TOGGLE_MODAL",
+  TOGGLE_LIKED: "TOGGLE_LIKED",
+}
 
 function reducer(state, action) {
   switch (action.type) {
-    case "TOGGLE_LIKED":
+    case ACTIONS.TOGGLE_LIKED:
       if (state.liked.includes(action.id)) {
         return {
           ...state,
@@ -12,11 +17,17 @@ function reducer(state, action) {
       } else {
         return { ...state, liked: [...state.liked, action.id] };
       }
-    case "TOGGLE_MODAL":
+    case ACTIONS.TOGGLE_MODAL:
       return {
         ...state,
         imageDetails: action.details,
       };
+    case ACTIONS.SET_PHOTO_DATA:
+      console.log('pork')
+      return {
+        ...state,
+        photoData: action.payload
+      }
 
     default:
       throw new Error(
@@ -25,25 +36,35 @@ function reducer(state, action) {
   }
 }
 
+const initialState = {
+  photoData: [],
+  topicData: [],
+  liked: [],
+  imageDetails: null,
+}
+
 export function useApplicationData() {
-  const [state, dispatch] = useReducer(reducer, {
-    photos: photos,
-    liked: [],
-    imageDetails: null,
-  });
+  const [state, dispatch] = useReducer(reducer, { ...initialState });
 
   const toggleLiked = (id) => {
-    dispatch({ type: "TOGGLE_LIKED", id: id });
+    dispatch({ type: ACTIONS.TOGGLE_LIKED, id: id });
   };
 
   const displayModal = (imageDetails) => {
-    dispatch({ type: "TOGGLE_MODAL", details: imageDetails });
+    dispatch({ type: ACTIONS.TOGGLE_MODAL, details: imageDetails });
   };
+
+   useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+  }, []);
 
   return {
     imageDetails: state.imageDetails,
     liked: state.liked,
-    photos: state.photos,
+    photos: state.photoData,
+    topics: state.topics,
     toggleLiked,
     displayModal,
   };
