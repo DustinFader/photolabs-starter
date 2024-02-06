@@ -12,13 +12,15 @@ const App = () => {
     liked,
     photos,
     topics,
+    clickedTopic,
     displayModal,
-    toggleLiked
+    toggleLiked,
   } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} displayModal={displayModal} liked={liked} toggleLiked={toggleLiked}/>
+      <HomeRoute topics={topics} photos={photos} displayModal={displayModal} 
+      liked={liked} toggleLiked={toggleLiked} clickedTopic={clickedTopic}/>
       {imageDetails && <PhotoDetailsModal displayModal={displayModal} imageDetails={imageDetails} liked={liked} toggleLiked={toggleLiked}/>}
     </div>
   );

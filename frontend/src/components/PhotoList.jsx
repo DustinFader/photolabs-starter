@@ -4,7 +4,6 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = ({ photos, liked, toggleLiked, displayModal }) => {
-  
   return (
     <ul className="photo-list">
       {Array.isArray(photos) && photos.map(photo => (

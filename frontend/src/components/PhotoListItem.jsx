@@ -5,7 +5,6 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
 
-  console.log(props.toggleLiked)
   return (
     <div className="photo-list__item">
       <PhotoFavButton photoId={props.id} liked={props.liked.includes(props.id)} toggleLiked={props.toggleLiked}/>

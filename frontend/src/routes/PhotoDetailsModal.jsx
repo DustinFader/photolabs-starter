@@ -9,7 +9,7 @@ const PhotoDetailsModal = (props) => {
   useEffect(() => {
     console.log(props);
   }, [props])
-  console.log(props.toggleLiked)
+  
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => props.displayModal(null)}>

@@ -1,10 +1,11 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   TOGGLE_MODAL: "TOGGLE_MODAL",
   TOGGLE_LIKED: "TOGGLE_LIKED",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS"
 }
 
 function reducer(state, action) {
@@ -33,6 +34,11 @@ function reducer(state, action) {
         ...state,
         topicData: action.payload
       }
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return {
+        ...state,
+        photoData: action.payload,
+      }
 
     default:
       throw new Error(
@@ -59,7 +65,9 @@ export function useApplicationData() {
     dispatch({ type: ACTIONS.TOGGLE_MODAL, details: imageDetails });
   };
 
-   useEffect(() => {
+  
+  // initial data that is to be set for default use
+  useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
@@ -68,13 +76,21 @@ export function useApplicationData() {
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
       .catch((error) => { console.error('Error:', error)});
-  }, []);
+    }, []);
+    
+    const clickedTopic = (topicId) => {
+      fetch(`/api/topics/photos/${topicId}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }))
+      .catch((error) => { console.error('Error:', error)});
+    };
 
   return {
     imageDetails: state.imageDetails,
     liked: state.liked,
     photos: state.photoData,
     topics: state.topicData,
+    clickedTopic,
     toggleLiked,
     displayModal,
   };
