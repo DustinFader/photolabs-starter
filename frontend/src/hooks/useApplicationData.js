@@ -1,30 +1,5 @@
 import React, { useState, useReducer } from "react";
 import photos from '../mocks/photos'
-// export const useApplicationData = () => {
-//   const [fullImage, setFullImage] = useState(null);
-//   const [liked, setLiked] = useState([]);
-
-//   const displayModal = (photo) => {
-//     setFullImage(photo);
-//   };
-
-//   const toggleLiked = (id) => {
-//     setLiked((currentFav) => {
-//       if (currentFav.includes(id)) {
-//         return currentFav.filter((favId) => favId !== id);
-//       } else {
-//         return [...currentFav, id];
-//       }
-//     });
-//   };
-
-//   return {
-//     fullImage,
-//     liked,
-//     displayModal,
-//     toggleLiked,
-//   };
-// };
 
 function reducer(state, action) {
   switch (action.type) {
