@@ -9,16 +9,17 @@ import { useApplicationData } from './hooks/useApplicationData';
 const App = () => {
 
   const {
-    fullImage,
-    state,
+    imageDetails,
+    liked,
+    photos,
     displayModal,
-    toggle
+    toggleLiked
   } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={state.photos} displayModal={displayModal} liked={state.liked} toggle={toggle}/>
-      {fullImage && <PhotoDetailsModal displayModal={displayModal} fullImage={fullImage} liked={state.liked}/>}
+      <HomeRoute topics={topics} photos={photos} displayModal={displayModal} liked={liked} toggleLiked={toggleLiked}/>
+      {imageDetails && <PhotoDetailsModal displayModal={displayModal} imageDetails={imageDetails} liked={liked} toggleLiked={toggleLiked}/>}
     </div>
   );
 };

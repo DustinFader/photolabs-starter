@@ -1,9 +1,9 @@
-import React, { useState, useReducer } from "react";
-import photos from '../mocks/photos'
+import { useReducer } from "react";
+import photos from "../mocks/photos";
 
 function reducer(state, action) {
   switch (action.type) {
-    case TOGGLE_LIKED:
+    case "TOGGLE_LIKED":
       if (state.liked.includes(action.id)) {
         return {
           ...state,
@@ -12,6 +12,11 @@ function reducer(state, action) {
       } else {
         return { ...state, liked: [...state.liked, action.id] };
       }
+    case "TOGGLE_MODAL":
+      return {
+        ...state,
+        imageDetails: action.details,
+      };
 
     default:
       throw new Error(
@@ -21,23 +26,25 @@ function reducer(state, action) {
 }
 
 export function useApplicationData() {
-  const [state, dispatch] = useReducer(reducer, { photos:photos, liked: [], fullImage: null});
+  const [state, dispatch] = useReducer(reducer, {
+    photos: photos,
+    liked: [],
+    imageDetails: null,
+  });
 
-  const toggle = (id) => {
-    dispatch({ type: TOGGLE_LIKED, id: id})
-  }
+  const toggleLiked = (id) => {
+    dispatch({ type: "TOGGLE_LIKED", id: id });
+  };
 
-  const [fullImage, setFullImage] = useState(null);
-
-  const displayModal = (photo) => {
-    setFullImage(photo);
+  const displayModal = (imageDetails) => {
+    dispatch({ type: "TOGGLE_MODAL", details: imageDetails });
   };
 
   return {
-    toggle,
+    imageDetails: state.imageDetails,
+    liked: state.liked,
+    photos: state.photos,
+    toggleLiked,
     displayModal,
-    setFullImage,
-    fullImage,
-    state
-  }
+  };
 }
