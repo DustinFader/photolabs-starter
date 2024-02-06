@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 
 const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA",
   TOGGLE_MODAL: "TOGGLE_MODAL",
   TOGGLE_LIKED: "TOGGLE_LIKED",
 }
@@ -23,10 +24,14 @@ function reducer(state, action) {
         imageDetails: action.details,
       };
     case ACTIONS.SET_PHOTO_DATA:
-      console.log('pork')
       return {
         ...state,
         photoData: action.payload
+      }
+    case ACTIONS.SET_TOPIC_DATA:
+      return {
+        ...state,
+        topicData: action.payload
       }
 
     default:
@@ -58,13 +63,16 @@ export function useApplicationData() {
     fetch("/api/photos")
       .then((response) => response.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
   }, []);
 
   return {
     imageDetails: state.imageDetails,
     liked: state.liked,
     photos: state.photoData,
-    topics: state.topics,
+    topics: state.topicData,
     toggleLiked,
     displayModal,
   };
