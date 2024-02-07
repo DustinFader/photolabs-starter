@@ -58,6 +58,7 @@ const initialState = {
 export function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
+  // sets whether the image is liked by the user or not
   const toggleLiked = (id) => {
     dispatch({ type: ACTIONS.TOGGLE_LIKED, id: id });
   };
@@ -65,17 +66,19 @@ export function useApplicationData() {
   const displayModal = (imageDetails) => {
     dispatch({ type: ACTIONS.TOGGLE_MODAL, details: imageDetails });
   };
-
+    // sets the home page of photos
     useEffect(() => {
       axios.get("/api/photos")
         .then((response) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data }))
         .catch((error) => { console.error('Error:', error)});
 
+      // sets the catagories on the site
       axios.get("/api/topics")
         .then((response) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data }))
         .catch((error) => { console.error('Error:', error)});
       }, []);
       
+      // changes shown images by catagory clicked
       const clickedTopic = (topicId) => {
         axios.get(`/api/topics/photos/${topicId}`)
         .then((response) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: response.data }))
