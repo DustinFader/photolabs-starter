@@ -1,4 +1,5 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
+import axios from "axios";
 
 const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
@@ -65,25 +66,21 @@ export function useApplicationData() {
     dispatch({ type: ACTIONS.TOGGLE_MODAL, details: imageDetails });
   };
 
-  
-  // initial data that is to be set for default use
-  useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-      .catch((error) => { console.error('Error:', error)});
-    fetch("/api/topics")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
-      .catch((error) => { console.error('Error:', error)});
-    }, []);
-    
-    const clickedTopic = (topicId) => {
-      fetch(`/api/topics/photos/${topicId}`)
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }))
-      .catch((error) => { console.error('Error:', error)});
-    };
+    useEffect(() => {
+      axios.get("/api/photos")
+        .then((response) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data }))
+        .catch((error) => { console.error('Error:', error)});
+
+      axios.get("/api/topics")
+        .then((response) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data }))
+        .catch((error) => { console.error('Error:', error)});
+      }, []);
+      
+      const clickedTopic = (topicId) => {
+        axios.get(`/api/topics/photos/${topicId}`)
+        .then((response) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: response.data }))
+        .catch((error) => { console.error('Error:', error)});
+      };
 
   return {
     imageDetails: state.imageDetails,

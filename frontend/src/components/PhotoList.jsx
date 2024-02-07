@@ -9,6 +9,7 @@ const PhotoList = ({ photos, liked, toggleLiked, displayModal }) => {
       {Array.isArray(photos) && photos.map(photo => (
         <PhotoListItem key={photo.id} {...photo} liked={liked} displayModal={displayModal} toggleLiked={toggleLiked}/>
       ))}
+      {/* Used by the modal where the simular_photos get passed in. */}
       {!Array.isArray(photos) && Object.values(photos).map(photo => (
         <PhotoListItem key={photo.id} {...photo} liked={liked} displayModal={displayModal} toggleLiked={toggleLiked}/>
       ))}
