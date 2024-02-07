@@ -2,6 +2,8 @@
 The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
+!['main example of photo labs']("./docs/photolabs-examlpe.png")
+!['example of photo labs full image details']("./docs/fullimage-examlpe.png")
 
 ## Setup
 
@@ -14,7 +16,7 @@ cd frontend
 npm start
 ```
 
-## [Backend] Running Backend Servier
+## [Backend] Running Backend Server
 
 Read `backend/readme` for further setup details.
 
