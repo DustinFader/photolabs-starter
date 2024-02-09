@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import FavIcon from './FavIcon';
-import '../styles/PhotoFavButton.scss';
+import FavIcon from "./FavIcon";
+import "../styles/PhotoFavButton.scss";
 
 function PhotoFavButton({ photoId, liked, toggleLiked }) {
   

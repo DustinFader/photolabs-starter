@@ -70,19 +70,19 @@ export function useApplicationData() {
     useEffect(() => {
       axios.get("/api/photos")
         .then((response) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data }))
-        .catch((error) => { console.error('Error:', error)});
+        .catch((error) => { console.error("Error:", error)});
 
       // sets the catagories on the site
       axios.get("/api/topics")
         .then((response) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data }))
-        .catch((error) => { console.error('Error:', error)});
+        .catch((error) => { console.error("Error:", error)});
       }, []);
       
       // changes shown images by catagory clicked
       const clickedTopic = (topicId) => {
         axios.get(`/api/topics/photos/${topicId}`)
         .then((response) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: response.data }))
-        .catch((error) => { console.error('Error:', error)});
+        .catch((error) => { console.error("Error:", error)});
       };
 
   return {
