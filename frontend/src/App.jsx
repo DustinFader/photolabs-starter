@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
@@ -17,11 +17,17 @@ const App = () => {
     toggleLiked,
   } = useApplicationData();
 
+  const [dark, setDark] = useState("")
+
+  const darkSwitch = () => {
+    setDark(prev => prev === "" ? "dark" : "")
+  }
+
   return (
-    <div className="App">
+    <div className={`App ${dark}`}>
       <HomeRoute topics={topics} photos={photos} displayModal={displayModal} 
-      liked={liked} toggleLiked={toggleLiked} clickedTopic={clickedTopic}/>
-      {imageDetails && <PhotoDetailsModal displayModal={displayModal} imageDetails={imageDetails} liked={liked} toggleLiked={toggleLiked}/>}
+      liked={liked} toggleLiked={toggleLiked} clickedTopic={clickedTopic} dark={dark} darkSwitch={darkSwitch}/>
+      {imageDetails && <PhotoDetailsModal displayModal={displayModal} imageDetails={imageDetails} liked={liked} toggleLiked={toggleLiked} dark={dark}/>}
     </div>
   );
 };
