@@ -6,7 +6,8 @@ const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   TOGGLE_MODAL: "TOGGLE_MODAL",
   TOGGLE_LIKED: "TOGGLE_LIKED",
-  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS"
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
+  TOGGLE_DARKMODE: "TOGGLE_DARKMODE",
 }
 
 function reducer(state, action) {
@@ -41,6 +42,12 @@ function reducer(state, action) {
         photoData: action.payload,
       }
 
+    case ACTIONS.TOGGLE_DARKMODE:
+      return {
+        ...state,
+        dark: state.dark === "light" ? "dark" : "light"
+      }
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -53,6 +60,7 @@ const initialState = {
   topicData: [],
   liked: [],
   imageDetails: null,
+  dark: "light"
 }
 
 export function useApplicationData() {
@@ -66,6 +74,11 @@ export function useApplicationData() {
   const displayModal = (imageDetails) => {
     dispatch({ type: ACTIONS.TOGGLE_MODAL, details: imageDetails });
   };
+
+  const darkSwitch = () => {
+    dispatch({ type: ACTIONS.TOGGLE_DARKMODE })
+  };
+
     // sets the home page of photos
     useEffect(() => {
       axios.get("/api/photos")
@@ -90,8 +103,10 @@ export function useApplicationData() {
     liked: state.liked,
     photos: state.photoData,
     topics: state.topicData,
+    dark: state.dark,
     clickedTopic,
     toggleLiked,
     displayModal,
+    darkSwitch,
   };
 }

@@ -15,16 +15,12 @@ const App = () => {
     liked,
     photos,
     topics,
+    dark,
     clickedTopic,
     displayModal,
     toggleLiked,
+    darkSwitch,
   } = useApplicationData();
-
-  const [dark, setDark] = useState("light");
-
-  const darkSwitch = () => {
-    setDark((prev) => (prev === "light" ? "dark" : "light"));
-  };
 
   const darkTheme = createTheme({
     palette: {
