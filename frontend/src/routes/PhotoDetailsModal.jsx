@@ -7,8 +7,8 @@ import PhotoList from "components/PhotoList";
 const PhotoDetailsModal = (props) => {
   
   return (
-    <div className={`photo-details-modal${props.dark}`}>
-      <button className={`photo-details-modal__close-button${props.dark}`} onClick={() => props.displayModal(null)}>
+    <div className={`photo-details-modal`}>
+      <button className={`photo-details-modal__close-button`} onClick={() => props.displayModal(null)}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
