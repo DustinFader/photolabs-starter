@@ -3,15 +3,15 @@ import React from "react";
 import "../styles/TopNavigationBar.scss"
 import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
-import DarkMode from "./DarkButton";
+import DarkButton from "./DarkButton";
 
-const TopNavigation = ({ topics, liked, clickedTopic, dark, darkSwitch}) => {
+const TopNavigation = ({ topics, liked, clickedTopic, darkSwitch, dark }) => {
 
   return (
-    <div className={`top-nav-bar ${dark}`}>
+    <div className="top-nav-bar">
       <span className={`top-nav-bar__logo ${dark}`}>PhotoLabs</span>
-      <TopicList topics={topics} clickedTopic={clickedTopic} dark={dark} darkSwitch={darkSwitch}/>
-      <DarkMode darkSwitch={darkSwitch} dark={dark}/>
+      <TopicList topics={topics} clickedTopic={clickedTopic} darkSwitch={darkSwitch} dark={dark}/>
+      <DarkButton darkSwitch={darkSwitch}/>
       <FavBadge isFavPhotoExist={liked.length > 0}/>
     </div>
   )

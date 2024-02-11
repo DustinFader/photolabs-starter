@@ -7,8 +7,9 @@ import PhotoList from "components/PhotoList";
 const PhotoDetailsModal = (props) => {
   
   return (
-    <div className={`photo-details-modal`}>
-      <button className={`photo-details-modal__close-button`} onClick={() => props.displayModal(null)}>
+    
+    <div className={`photo-details-modal ${props.dark}`}>
+      <button className="photo-details-modal__close-button" onClick={() => props.displayModal(null)}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
@@ -20,7 +21,7 @@ const PhotoDetailsModal = (props) => {
             <p className="photo-details-modal__photographer-location">{props.imageDetails.location.city}, {props.imageDetails.location.country}</p>
           </div>
         </div>
-        <h4 className="photo-details-modal__header">Similar bombastic photos</h4>
+        <h4 className={`photo-details-modal__header ${props.dark}`} >Similar bombastic photos</h4>
         <PhotoList photos={props.imageDetails.similar_photos} liked={props.liked} toggleLiked={props.toggleLiked} />
       </div>
     </div>

@@ -31,7 +31,7 @@ const App = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <div className={`App ${dark}`}>
+      <div className={`App`}>
         <HomeRoute
           topics={topics}
           photos={photos}
@@ -39,8 +39,8 @@ const App = () => {
           liked={liked}
           toggleLiked={toggleLiked}
           clickedTopic={clickedTopic}
-          dark={dark}
           darkSwitch={darkSwitch}
+          dark={dark}
         />
         {imageDetails && (
           <PhotoDetailsModal
