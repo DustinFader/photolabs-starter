@@ -5,7 +5,7 @@ The PhotoLabs project for the Web Development React course programming.
 !['main example of photo labs'](https://github.com/DustinFader/photolabs-starter/blob/ace7347fb7b28af44f7049bfb14e207a24c5c2d9/docs/photolabs-example.png)
 
 
-!['example of photo labs full image details'](https://github.com/DustinFader/photolabs-starter/blob/ace7347fb7b28af44f7049bfb14e207a24c5c2d9/docs/photolabs-example.png)
+!['example of photo labs full image details'](https://github.com/DustinFader/photolabs-starter/blob/a66a0b0da0700a1b9fe7fceb0d16d9d238ba77fe/docs/fullimage-example.png)
 
 ## Setup
 
